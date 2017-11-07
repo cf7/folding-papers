@@ -1,0 +1,34 @@
+{
+  "name": "folding-papers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cf7/folding-papers.git"
+  },
+  "author": "cf7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cf7/folding-papers/issues"
+  },
+  "homepage": "https://github.com/cf7/folding-papers#readme",
+  "dependencies": {
+    "http-server": "^0.10.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb-base": "^11.1.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^7.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  }
+}
