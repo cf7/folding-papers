@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import SortableTree from '../../react-sortable-tree';
+import SortableTree from 'react-sortable-tree';
 
-export default class Tree extends Component {
+export default class Tree extends React.Component {
   constructor(props) {
     super(props);
 

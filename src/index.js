@@ -1,3 +1,5 @@
+import FoldedPaper from './folded-paper';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,7 @@ class App extends React.Component {
     return (
       <div>
         <p>Hello</p>
+        <FoldedPaper />
       </div>
     );
   }
@@ -22,3 +25,8 @@ ReactDOM.render(
   document.getElementById('folding-papers-display')
 );
 
+/*
+if exporting this app separate from the server,
+this file becomes the point of exports
+for now it just combines components
+*/
