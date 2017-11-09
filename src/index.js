@@ -20,10 +20,10 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('folding-papers-display')
-);
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('folding-papers-display')
+// );
 
 /*
 if exporting this app separate from the server,
