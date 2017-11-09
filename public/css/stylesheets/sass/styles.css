@@ -8788,3 +8788,21 @@ button.close {
     display: none !important;
   }
 }
+/* line 6, ../../sass/partials/_base.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* line 12, ../../sass/partials/_base.scss */
+.header {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  height: 50px;
+  line-height: 1.5;
+  font-size: 30px;
+  border-bottom: blue solid 3px;
+  color: blue;
+}
