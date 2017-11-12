@@ -7,29 +7,27 @@
   <!-- Assorted iOS-related metadata. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Bootstrap 3 -->
   <link href="/css/stylesheets/sass/styles.css" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body>
 
-
-  <div class="container">
-    <div class="header"></div>
-    <div class="row">
-      <div class="col-md-6"><h1>col-md-1</h1></div>
-      <div class="col-md-6"><div id="folding-papers-display"></div></div>
-    </div>
-  </div>
+  <div class="container" id="main-display"></div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+
+  <!-- ReactJS -->
   <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <!-- need for imports -->
 
   <script src="/js/app-bundle.js"></script>
+  <!-- check webpack.config.js to make sure filenames match -->
 
   <footer class="footer">
   </footer>

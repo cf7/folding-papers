@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "./node_modules/.bin/webpack -d",
-    "nodemon": "nodemon -e js,json,html,css server.js",
+    "compile": "./node_modules/.bin/webpack -d;",
+    "webpack-watch": "$(npm bin)/webpack --display-error-details;",
+    "nodemon": "./node_modules/.bin/webpack -d; nodemon -e js,json,html,css server.js;",
     "test": "test"
   },
   "repository": {
@@ -28,9 +29,11 @@
     "body-parser": "^1.18.2",
     "browserify": "^14.5.0",
     "express": "^4.16.2",
+    "filepreview": "^1.0.14",
     "morgan": "^1.9.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-dropzone": "^4.2.1",
     "react-sortable-tree": "^1.5.0"
   },
   "devDependencies": {
