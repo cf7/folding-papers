@@ -11,16 +11,17 @@ export default class Dropzone extends React.Component {
 
     this.onDrop = this.onDrop.bind(this);
   }
-  
+
   onDrop(files) {
-    files.forEach( (file) => {
+    files.forEach((file) => {
       const filereader = new FileReader();
       // readAsBinaryString sends "load" event
       // passes binarystring content to onload in result object
       filereader.onload = () => {
         const fileAsBinaryString = filereader.result;
         // pass content to state for displaying
-        this.props.fileLoaded(true);
+        this.props.displayPaper(fileAsBinaryString); // <-- order for these matters
+        this.props.fileLoaded(true); // <-- because of async
       };
       filereader.onabort = () => { console.log("file reading aborted"); };
       filereader.onerror = () => { console.log("file reading failed"); };

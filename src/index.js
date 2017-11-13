@@ -1,5 +1,5 @@
 import Dropzone from './dropzone';
-import Paper from './paper-display';
+import Paper from './paper';
 import FoldedPaper from './folded-paper';
 
 // remember webpack watch to recompile files
@@ -14,6 +14,7 @@ class App extends React.Component {
     // ES6 doesn't bind "this" automatically
     this.exampleHandler = this.exampleHandler.bind(this);
     this.fileLoaded = this.fileLoaded.bind(this);
+    this.displayPaper = this.displayPaper.bind(this);
   }
 
   exampleHandler(event) {
@@ -21,9 +22,16 @@ class App extends React.Component {
   }
 
   fileLoaded(loaded) {
-    alert("Success!");
     this.setState({
       dropZoneHidden: loaded
+    });
+  }
+
+  displayPaper(fileAsBinaryString) {
+    // data:asdlkfjalskdjf...
+    alert("Success!");
+    this.setState({
+      paper: fileAsBinaryString
     });
   }
 
@@ -31,7 +39,7 @@ class App extends React.Component {
     return (
       <div className="row">
         <div className="col-sm-6">
-          { this.state.dropZoneHidden ? <Paper /> : <Dropzone fileLoaded={this.fileLoaded}/> }
+          { this.state.dropZoneHidden ? <Paper paper={this.state.paper}/> : <Dropzone fileLoaded={this.fileLoaded} displayPaper={this.displayPaper}/> }
         </div>
         <div className="col-sm-6">
           <FoldedPaper />
