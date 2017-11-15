@@ -7,3 +7,4 @@ config
 app-bundle.js
 *.app-bundle.js
 .sass-cache
+uploads

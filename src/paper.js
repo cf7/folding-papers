@@ -5,8 +5,8 @@ export default class Paper extends React.Component {
     super(props);
     this.state = {
       paper: this.props.paper,
-      // canvasHeight: 0,
-      // canvasWidth: 0,
+      canvasHeight: 0,
+      canvasWidth: 0,
       pageNumber: 1
     };
     this.componentDidMount = this.componentDidMount.bind(this);
@@ -16,6 +16,8 @@ export default class Paper extends React.Component {
     // process paper data
 
     // webpack default specifies worker file
+
+    // TODO: api call to get document url
 
     // let loadingPDF = PDFJS.getDocument(this.state.paper);
     // // getDocument() needs typeof string or arraybuffer or daterange
@@ -34,20 +36,20 @@ export default class Paper extends React.Component {
     //       canvasHeight: viewport.height,
     //       canvasWidth: viewport.width
     //     });
-    //
-    //     // instead of rendering, send to imported
-    //     // viewer html react component
-    //
-    //     // Render PDF page into canvas context
-    //     let renderContext = {
-    //       canvasContext: context,
-    //       viewport: viewport
-    //     };
-    //     let renderTask = page.render(renderContext);
-    //     renderTask.then(() => {
-    //       console.log('Page rendered');
-    //     });
-    //   });
+
+        // instead of rendering, send to imported
+        // viewer html react component
+
+        // Render PDF page into canvas context
+      //   let renderContext = {
+      //     canvasContext: context,
+      //     viewport: viewport
+      //   };
+      //   let renderTask = page.render(renderContext);
+      //   renderTask.then(() => {
+      //     console.log('Page rendered');
+      //   });
+      // });
     // }, (error) => {
     //   // PDF loading error
     //   console.error(error);
@@ -57,7 +59,9 @@ export default class Paper extends React.Component {
   render() {
     return (
       <div>
-        <canvas ref="canvas" height={this.state.canvasHeight} width={this.state.canvasWidth}></canvas>
+        <iframe height={this.state.canvasHeight} width={this.state.canvasWidth}>
+          <p>This browser does not support iframes.</p>
+        </iframe>
       </div>
     );
   }

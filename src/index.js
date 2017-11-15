@@ -27,11 +27,11 @@ class App extends React.Component {
     });
   }
 
-  displayPaper(fileAsBinaryString) {
+  displayPaper(fileAsDataURL) {
     // data:asdlkfjalskdjf...
     alert("Success!");
     this.setState({
-      paper: fileAsBinaryString
+      paper: fileAsDataURL
     });
   }
 

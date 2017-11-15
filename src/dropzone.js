@@ -18,15 +18,28 @@ export default class Dropzone extends React.Component {
       // readAsBinaryString sends "load" event
       // passes binarystring content to onload in result object
       filereader.onload = () => {
-        const fileAsBinaryString = filereader.result;
+        const fileAsDataURL = filereader.result;
         // pass content to state for displaying
-        this.props.displayPaper(fileAsBinaryString); // <-- order for these matters
+        // this.props.displayPaper(fileAsDataURL); // <-- order for these matters
         this.props.fileLoaded(true); // <-- because of async
+        $.ajax({
+            url: "/upload",
+            method: "POST",
+            data: { data: fileAsDataURL }
+        }).done(function(data, textStatus, xhr) {
+            console.log(data);
+            console.log(textStatus);
+            console.log(xhr);
+        }).fail(function (xhr, textStatus, errorThrown) {
+            console.log(errorThrown);
+            console.log(textStatus);
+            console.log(xhr);
+        });
       };
       filereader.onabort = () => { console.log("file reading aborted"); };
       filereader.onerror = () => { console.log("file reading failed"); };
 
-      filereader.readAsBinaryString(file);
+      filereader.readAsDataURL(file);
     });
 
     // this.setState({
