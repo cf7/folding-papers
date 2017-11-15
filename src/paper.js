@@ -59,7 +59,10 @@ export default class Paper extends React.Component {
   render() {
     return (
       <div>
-        <iframe height={this.state.canvasHeight} width={this.state.canvasWidth}>
+        <iframe height={400}
+                width={400}
+                type="text/html"
+                src={"viewer.html"}> // relative to index.html !!!
           <p>This browser does not support iframes.</p>
         </iframe>
       </div>
