@@ -11,7 +11,7 @@ export default class Tree extends React.Component {
 
   render() {
     return (
-      <div style={{ height: 400 }}>
+      <div style={{ height: 200 }}>
         <SortableTree
           treeData={this.state.treeData}
           onChange={treeData => this.setState({ treeData })}

@@ -2,6 +2,7 @@ import Dropzone from './components/dropzone';
 import Paper from './components/paper';
 import FoldedPaper from './components/folded-paper';
 import TextArea from 'react-textarea-autosize';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 // remember webpack watch to recompile files
 class App extends React.Component {
@@ -9,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       dropZoneHidden: true,
-      textAreaHidden: false
+      textAreaHidden: false,
+      isSticky: true
     };
     // as of ES6 and React 15.5.0, we have to explicitly bind "this" in the constructor
     // so that handler functions have access to it, otherwise "this" is undefined
@@ -45,7 +47,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row" style={{ height: 1500 }}>
         <div className="col-sm-6">
           <div className="row">
             <label>
@@ -61,12 +63,21 @@ class App extends React.Component {
                         minRows={10}
                         defaultValue="Paste text here . . ."/>)
                 : <Dropzone fileLoaded={this.fileLoaded} /> }
-            </div>
           </div>
-        <div className="col-sm-6">
-          <FoldedPaper />
         </div>
+
+        <div className="col-sm-6">
+          <StickyContainer style={{ height: 1500 }}>
+            <Sticky disableCompensation>
+              {
+                ({ }) => { return ( <FoldedPaper /> ) }
+              }
+            </Sticky>
+          </StickyContainer>
+        </div>
+
       </div>
+
     );
   }
 }
