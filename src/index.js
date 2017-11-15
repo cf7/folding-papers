@@ -1,24 +1,40 @@
-import Dropzone from './dropzone';
-import Paper from './paper';
-import FoldedPaper from './folded-paper';
+import Dropzone from './components/dropzone';
+import Paper from './components/paper';
+import FoldedPaper from './components/folded-paper';
+import TextArea from 'react-textarea-autosize';
 
 // remember webpack watch to recompile files
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropZoneHidden: false
+      dropZoneHidden: true,
+      textAreaHidden: false
     };
     // as of ES6 and React 15.5.0, we have to explicitly bind "this" in the constructor
     // so that handler functions have access to it, otherwise "this" is undefined
     // ES6 doesn't bind "this" automatically
     this.exampleHandler = this.exampleHandler.bind(this);
     this.fileLoaded = this.fileLoaded.bind(this);
-    this.displayPaper = this.displayPaper.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   exampleHandler(event) {
     // code
+  }
+
+  handleChange(event) {
+    if (this.state.textAreaHidden) {
+      this.setState({
+        dropZoneHidden: true,
+        textAreaHidden: false
+      });
+    } else {
+      this.setState({
+        dropZoneHidden: false,
+        textAreaHidden: true
+      });
+    }
   }
 
   fileLoaded(loaded) {
@@ -27,20 +43,26 @@ class App extends React.Component {
     });
   }
 
-  displayPaper(fileAsDataURL) {
-    // data:asdlkfjalskdjf...
-    alert("Success!");
-    this.setState({
-      paper: fileAsDataURL
-    });
-  }
-
   render() {
     return (
       <div className="row">
         <div className="col-sm-6">
-          { this.state.dropZoneHidden ? <Paper paper={this.state.paper}/> : <Dropzone fileLoaded={this.fileLoaded} displayPaper={this.displayPaper}/> }
-        </div>
+          <div className="row">
+            <label>
+              <input type="checkbox" defaultChecked={!this.state.textAreaHidden} onChange={this.handleChange} />
+              Plain text
+            </label>
+          </div>
+          <div className="row">
+            { this.state.dropZoneHidden
+                ? (this.state.textAreaHidden
+                    ? <Paper />
+                    : <TextArea
+                        minRows={10}
+                        defaultValue="Paste text here . . ."/>)
+                : <Dropzone fileLoaded={this.fileLoaded} /> }
+            </div>
+          </div>
         <div className="col-sm-6">
           <FoldedPaper />
         </div>

@@ -12,14 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.post('/upload', (request, response) => {
-  // TODO: make temp directory
   tmp.file({ dir: './uploads/', postfix: '.pdf' }, (error, filename, fd, cleanupCallback) => {
     if (error) {
       throw error;
     }
-    console.log(request.body.data);
-    console.log('******File: ', filename);
-    console.log('Filedescriptor: ', fd);
     fs.outputFile(filename, request.body.data)
     .then(() => {
       response.status(200).send("Success!");
@@ -27,10 +23,10 @@ app.post('/upload', (request, response) => {
     .catch((error) => {
       response.status(400).send(error);
     });
-    
+
+    // TODO: figure out cleanup on process exit
     cleanupCallback();
   });
-
 });
 
 app.get('*', (req, res) => {

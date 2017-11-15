@@ -41,10 +41,6 @@ export default class Dropzone extends React.Component {
 
       filereader.readAsDataURL(file);
     });
-
-    // this.setState({
-    //   files
-    // });
   }
 
   render() {
