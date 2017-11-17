@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 export default class Paper extends React.Component {
   constructor(props) {
     super(props);

@@ -1,8 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Dropzone from './components/dropzone';
 import Paper from './components/paper';
 import FoldedPaper from './components/folded-paper';
 import TextArea from 'react-textarea-autosize';
 import { StickyContainer, Sticky } from 'react-sticky';
+import Quill from 'react-quill';
 
 // remember webpack watch to recompile files
 class App extends React.Component {
@@ -11,8 +14,9 @@ class App extends React.Component {
     this.state = {
       dropZoneHidden: true,
       textAreaHidden: false,
-      isSticky: true
+      isSticky: true,
     };
+
     // as of ES6 and React 15.5.0, we have to explicitly bind "this" in the constructor
     // so that handler functions have access to it, otherwise "this" is undefined
     // ES6 doesn't bind "this" automatically
@@ -23,6 +27,12 @@ class App extends React.Component {
 
   exampleHandler(event) {
     // code
+  }
+
+  fileLoaded(loaded) {
+    this.setState({
+      dropZoneHidden: loaded
+    });
   }
 
   handleChange(event) {
@@ -39,12 +49,6 @@ class App extends React.Component {
     }
   }
 
-  fileLoaded(loaded) {
-    this.setState({
-      dropZoneHidden: loaded
-    });
-  }
-
   render() {
     return (
       <div className="row" style={{ height: 1500 }}>
@@ -59,9 +63,7 @@ class App extends React.Component {
             { this.state.dropZoneHidden
                 ? (this.state.textAreaHidden
                     ? <Paper />
-                    : <TextArea
-                        minRows={10}
-                        defaultValue="Paste text here . . ."/>)
+                    : <Quill />)
                 : <Dropzone fileLoaded={this.fileLoaded} /> }
           </div>
         </div>
@@ -91,4 +93,11 @@ ReactDOM.render(
 if exporting this app separate from the server,
 this file becomes the point of exports
 for now it just combines components
+*/
+
+/*
+<TextArea
+    minRows={10}
+    defaultValue="Paste text here . . ."
+    onClick={this.handleSelection}/>
 */
