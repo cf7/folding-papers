@@ -5,7 +5,7 @@ import Paper from './components/paper';
 import FoldedPaper from './components/folded-paper';
 import TextArea from 'react-textarea-autosize';
 import { StickyContainer, Sticky } from 'react-sticky';
-import Quill from 'react-quill';
+import Editor from './components/editor';
 
 // remember webpack watch to recompile files
 class App extends React.Component {
@@ -63,7 +63,7 @@ class App extends React.Component {
             { this.state.dropZoneHidden
                 ? (this.state.textAreaHidden
                     ? <Paper />
-                    : <Quill />)
+                    : <Editor />)
                 : <Dropzone fileLoaded={this.fileLoaded} /> }
           </div>
         </div>
