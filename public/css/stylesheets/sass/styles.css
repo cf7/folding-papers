@@ -8792,3 +8792,9 @@ button.close {
 .quill {
   height: 400px;
 }
+
+/* line 11, ../../sass/partials/_base.scss */
+.sketch-picker {
+  position: fixed;
+  z-index: 1000;
+}

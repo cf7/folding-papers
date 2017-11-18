@@ -1,29 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactQuill, { Quill } from 'react-quill';
-import ColorPicker from './color';
-
-function pickColor (event) {
-  console.log(event.target);
-  // access ColorPicker
-}
-/*
- * Custom toolbar component including ColorPicker button
- */
-const CustomToolbar = () => (
-  <div id="toolbar">
-    <select className="ql-header">
-      <option value="1"></option>
-      <option value="2"></option>
-      <option value="3"></option>
-    </select>
-    <button className="ql-bold"></button>
-    <button className="ql-italic"></button>
-    <button className="ql-color">
-      <ColorPicker />
-    </button>
-  </div>
-);
+import CustomToolbar from './toolbar';
 
 export default class Editor extends React.Component {
   constructor(props) {
@@ -59,9 +37,6 @@ export default class Editor extends React.Component {
     this.modules = {
       toolbar: {
         container: "#toolbar",
-        handlers: {
-          "color": pickColor,
-        }
       }
     };
     this.formats = [

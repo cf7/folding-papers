@@ -8,6 +8,7 @@ export default class ColorPicker extends React.Component {
     this.state = {
       color: ""
     };
+    this.handleChangeComplete = this.handleChangeComplete.bind(this);
   }
 
   handleChangeComplete(color) {
@@ -15,7 +16,7 @@ export default class ColorPicker extends React.Component {
       color: color.hex
     });
   }
-
+  
   render() {
     return (
         <SketchPicker
