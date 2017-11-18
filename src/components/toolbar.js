@@ -14,7 +14,9 @@ export default class CustomToolbar extends React.Component {
     this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
-  handleColorClick() {
+  // TODO: how to close color picker
+  handleColorClick(event) {
+    console.log(event.target);
     this.setState({
       displayColorPicker: !this.state.displayColorPicker
     });
