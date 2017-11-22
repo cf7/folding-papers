@@ -30,10 +30,9 @@ export default class CustomToolbar extends React.Component {
     document.removeEventListener('mousedown', this.handleClickOutside);
   }
 
-
   setWrapperRef(node) {
     this.wrapperRef = node;
-   }
+  }
 
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
@@ -54,7 +53,7 @@ export default class CustomToolbar extends React.Component {
         <button className="ql-bold"></button>
         <button className="ql-italic"></button>
         <button className="ql-color" onClick={this.handleColorClick}>
-          { this.state.displayColorPicker ? <ColorPicker /> : null }
+          { this.state.displayColorPicker ? <div ref={this.setWrapperRef}><ColorPicker /></div> : null }
         </button>
       </div>
     );

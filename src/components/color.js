@@ -15,6 +15,12 @@ export default class ColorPicker extends React.Component {
 
   handleClick(event) {
     // event is browser native event now b/c of NativeListener
+    console.log(event.target.title);
+    if (event.target.title) { // only presetColor divs have title attributes
+      this.setState({
+        color: event.target.title // where the presetColor is stored
+      });
+    }
     event.stopPropagation();
   }
 
