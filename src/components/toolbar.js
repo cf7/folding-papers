@@ -59,13 +59,13 @@ export default class CustomToolbar extends React.Component {
         </select>
         <button className="ql-bold"></button>
         <button className="ql-italic"></button>
+        <style jsx global>{`
+          #toolbar > button.ql-color > svg > line.ql-color-label.ql-stroke.ql-transparent {
+            opacity: 1;
+            stroke: ${this.state.selectedColor};
+          }
+        `}</style>
         <button className="ql-color" onClick={this.handleClick}>
-          <style jsx global>{`
-            #toolbar > button.ql-color > svg > line.ql-color-label.ql-stroke.ql-transparent {
-              opacity: 1;
-              stroke: ${this.state.selectedColor};
-            }
-          `}</style>
           { this.state.displayColorPicker ?
             <div ref={this.setWrapperRef}>
               <ColorPicker colorChange={this.handleColorChange} />
