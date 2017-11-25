@@ -6,19 +6,20 @@ export default class CustomToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayColorPicker: false
+      displayColorPicker: false,
+      selectedColor: "",
     };
 
-    this.handleColorClick = this.handleColorClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
   }
 
-  // TODO: how to close color picker
-  handleColorClick(event) {
+  handleClick(event) {
     console.log(event.target);
     this.setState({
-      displayColorPicker: !this.state.displayColorPicker
+      displayColorPicker: !this.state.displayColorPicker,
     });
   }
 
@@ -42,6 +43,12 @@ export default class CustomToolbar extends React.Component {
     }
   }
 
+  handleColorChange(color) {
+    this.setState({
+      selectedColor: color
+    });
+  }
+
   render() {
     return (
       <div id="toolbar">
@@ -52,8 +59,18 @@ export default class CustomToolbar extends React.Component {
         </select>
         <button className="ql-bold"></button>
         <button className="ql-italic"></button>
-        <button className="ql-color" onClick={this.handleColorClick}>
-          { this.state.displayColorPicker ? <div ref={this.setWrapperRef}><ColorPicker /></div> : null }
+        <button className="ql-color" onClick={this.handleClick}>
+          <style jsx global>{`
+            #toolbar > button.ql-color > svg > line.ql-color-label.ql-stroke.ql-transparent {
+              opacity: 1;
+              stroke: ${this.state.selectedColor};
+            }
+          `}</style>
+          { this.state.displayColorPicker ?
+            <div ref={this.setWrapperRef}>
+              <ColorPicker colorChange={this.handleColorChange} />
+            </div>
+            : null }
         </button>
       </div>
     );
