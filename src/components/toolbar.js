@@ -17,7 +17,6 @@ export default class CustomToolbar extends React.Component {
   }
 
   handleClick(event) {
-    console.log(event.target);
     this.setState({
       displayColorPicker: !this.state.displayColorPicker,
     });
@@ -60,7 +59,7 @@ export default class CustomToolbar extends React.Component {
         <button className="ql-bold"></button>
         <button className="ql-italic"></button>
         <style jsx global>{`
-          #toolbar > button.ql-color > svg > line.ql-color-label.ql-stroke.ql-transparent {
+          #toolbar > button.ql-color > svg > .ql-stroke {
             opacity: 1;
             stroke: ${this.state.selectedColor};
           }

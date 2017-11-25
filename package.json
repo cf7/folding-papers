@@ -52,8 +52,9 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^7.0.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.0.2",
+    "mocha": "^3.5.3",
     "nodemon": "^1.12.1",
+    "react-test-renderer": "^16.1.1",
     "supertest": "^2.0.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
